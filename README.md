@@ -108,7 +108,7 @@ As associações e movimentos dos gráficos descrevem o passado. Não demonstram
 
 ## Demonstração e navegação
 
-Status: versão local implementada e verificada com o AppTest do Streamlit. **A publicação no Community Cloud e as capturas reais da interface ainda estão pendentes.**
+Status: versão local verificada com o AppTest do Streamlit e revisada visualmente pelo estudante em 18/10/2026, após ajustes no eixo do gráfico de drawdown e na formatação do volume financeiro. **A publicação no Community Cloud e as capturas reais da interface ainda estão pendentes.**
 
 1. Na barra lateral, filtre setores, ações e período; use **Restaurar filtros** para voltar ao padrão.
 2. Confira quatro KPIs: retorno médio, melhor ativo, menor desempenho e volatilidade média anual.

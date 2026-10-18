@@ -35,4 +35,6 @@ Após a configuração das credenciais locais, a conexão real ao Supabase foi v
 
 ## Limites desta verificação
 
-Não foram realizados deploy, revisão visual no navegador nem teste de download pelo navegador. A integração de navegador falhou na inicialização. Os testes de componentes não substituem a conferência de layout e interação no app publicado.
+Em 18/10/2026, o estudante informou ter testado o painel e considerado o resultado adequado, após os ajustes no título do eixo Y do gráfico 5 e na apresentação dos volumes financeiros. Os volumes passaram a usar separadores brasileiros e duas casas decimais nas tabelas e no tooltip do gráfico 3, preservando os valores numéricos para cálculos e exportação.
+
+A revisão visual foi realizada pelo estudante; a integração de navegador do assistente falhou na inicialização. Permanecem pendentes o deploy, as capturas reais da interface e a conferência do app publicado.

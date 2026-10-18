@@ -28,7 +28,8 @@ Crie um quadro pessoal público com **Backlog**, **A fazer**, **Em andamento** e
 - Implementados: ETL, dados locais, cálculos, cinco gráficos, quatro KPIs, filtros, cache, reset, abas, exportação, modelo SQL, EDA e documentação inicial.
 - Verificados: execução pelo AppTest do Streamlit, filtros cruzados, ausência de seleção, período sem pregões e restauração. Cálculos conferidos com uma série controlada.
 - Supabase validado: conexão real, oito ativos, 5.960 cotações e execução do painel via banco, com quatro KPIs e cinco gráficos sem exceções.
-- Pendente: validação visual e capturas da interface, deploy, quadro Trello público e sua captura, gravação do vídeo, LinkedIn e revisão pessoal.
+- Revisão local: o estudante informou em 18/10/2026 ter testado o painel e considerado o resultado adequado após os ajustes visuais.
+- Pendente: capturas da interface, deploy, quadro Trello público e sua captura, gravação do vídeo, LinkedIn e revisão pessoal do código.
 - A integração de navegador apresentou falha de inicialização nesta sessão; não há captura real da aplicação anexada.
 
 ## Versionamento
