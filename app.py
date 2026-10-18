@@ -1,5 +1,3 @@
-"""Dashboard do módulo 02: componentes nativos do Streamlit e gráficos Plotly Express."""
-
 import pandas as pd
 import plotly.express as px
 import streamlit as st
