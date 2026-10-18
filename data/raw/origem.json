@@ -1,0 +1,18 @@
+{
+  "fonte": "Yahoo Finance, via yfinance (não é extração direta da B3)",
+  "extraido_em_utc": "2026-10-18T01:37:37.626970+00:00",
+  "inicio": "2021-01-01",
+  "fim_exclusivo": "2024-01-01",
+  "auto_adjust": false,
+  "yfinance": "1.7.0",
+  "ativos": [
+    "WEGE3",
+    "VALE3",
+    "GGBR4",
+    "PETR4",
+    "EGIE3",
+    "ITUB4",
+    "ABEV3",
+    "RENT3"
+  ]
+}
