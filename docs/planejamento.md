@@ -29,15 +29,13 @@ Crie um quadro pessoal público com **Backlog**, **A fazer**, **Em andamento** e
 - Verificados: execução pelo AppTest do Streamlit, filtros cruzados, ausência de seleção, período sem pregões e restauração. Cálculos conferidos com uma série controlada.
 - Supabase validado: conexão real, oito ativos, 5.960 cotações e execução do painel via banco, com quatro KPIs e cinco gráficos sem exceções.
 - Revisão local: o estudante informou em 18/10/2026 ter testado o painel e considerado o resultado adequado após os ajustes visuais.
-- Pendente: capturas da interface, deploy, quadro Trello público e sua captura, gravação do vídeo, LinkedIn e revisão pessoal do código.
-- A integração de navegador apresentou falha de inicialização nesta sessão; não há captura real da aplicação anexada.
-
+- Publicação: https://samuel-bucco-projeto-final-b3.streamlit.app/. Em 18/10/2026, o estudante confirmou a fonte Supabase, os filtros, a restauração e a exportação em produção, e forneceu capturas dos cinco gráficos e do resumo.
+- Evidências visuais: sete capturas salvas em `docs/imagens` e incluídas no README, cobrindo KPIs, cinco gráficos e resumo de retorno e risco.
+- Pendente: quadro Trello público e sua captura, gravação do vídeo, LinkedIn e revisão pessoal do código.
 ## Versionamento
 
 Use `feature/*` a partir de `develop`; integre em `develop` e, após revisão, em `main`. Preserve as branches após os merges, conforme o roteiro. Faça commits reais por etapa, sem reconstruir atividades ou datas que não aconteceram.
 
 ## Links que faltam no README
 
-Aplicação Streamlit Cloud, quadro Trello público, captura do quadro, capturas do app, vídeo e LinkedIn do estudante.
-
-O roteiro informa entrega até **03/11/2026 às 22h**. Confira também o prazo exibido no AVA. Após submeter a versão final, o roteiro orienta não alterar o repositório até receber a nota.
+Quadro Trello público, captura do quadro e vídeo. O endereço do Streamlit Cloud e as capturas do app já foram incluídos no README.

@@ -37,60 +37,58 @@ O modelo dimensional simples tem `dim_ativos` (chave: ticker) e `fato_cotacoes` 
 
 ## Dicionário de dados
 
-| Campo | Tipo | Significado / cálculo |
-|---|---|---|
-| data | datetime / SQL DATE | Data do pregão |
-| ticker | string | Código local da ação, sem `.SA` |
-| setor | string | Agrupamento econômico didático |
-| abertura | float | Preço de abertura fornecido pelo Yahoo, em R$ |
-| maxima | float | Maior preço do dia fornecido pelo Yahoo, em R$ |
-| minima | float | Menor preço do dia fornecido pelo Yahoo, em R$ |
-| fechamento | float | Close do provedor, sem ajuste adicional por dividendos; pode refletir desdobramentos |
-| fechamento_ajustado | float | Adj Close do provedor; base dos cálculos de desempenho |
-| volume | int | Quantidade negociada segundo o provedor; não representa reais |
-| volume_financeiro_estimado | float | fechamento × volume, aproximação em R$, não o giro financeiro oficial |
-| retorno_diario | float | `(preço ajustado / preço ajustado anterior - 1) × 100` |
-| base_100 | float | `preço ajustado / primeiro preço ajustado do recorte × 100` |
-| drawdown | float | `(preço ajustado / máximo ajustado acumulado - 1) × 100` |
-| sma_21 / sma_50 | float | Média de 21 / 50 pregões do fechamento ajustado |
-| retorno_acumulado | float | `(último ajustado / primeiro ajustado - 1) × 100` |
-| volatilidade_anual | float | Desvio padrão amostral do retorno diário decimal × √252 × 100 |
-| sharpe_rf_zero | float | Média do retorno diário decimal × 252 / volatilidade anual decimal; rf = 0 |
-| drawdown_maximo | float | Menor drawdown no recorte, em % |
-| volume_medio_estimado | float | Média diária do volume financeiro estimado, em R$ |
+| Campo                      | Tipo                | Significado / cálculo                                                               |
+| -------------------------- | ------------------- | ------------------------------------------------------------------------------------ |
+| data                       | datetime / SQL DATE | Data do pregão                                                                      |
+| ticker                     | string              | Código local da ação, sem `.SA`                                                 |
+| setor                      | string              | Agrupamento econômico didático                                                     |
+| abertura                   | float               | Preço de abertura fornecido pelo Yahoo, em R$                                       |
+| maxima                     | float               | Maior preço do dia fornecido pelo Yahoo, em R$                                      |
+| minima                     | float               | Menor preço do dia fornecido pelo Yahoo, em R$                                      |
+| fechamento                 | float               | Close do provedor, sem ajuste adicional por dividendos; pode refletir desdobramentos |
+| fechamento_ajustado        | float               | Adj Close do provedor; base dos cálculos de desempenho                              |
+| volume                     | int                 | Quantidade negociada segundo o provedor; não representa reais                       |
+| volume_financeiro_estimado | float               | fechamento × volume, aproximação em R$, não o giro financeiro oficial            |
+| retorno_diario             | float               | `(preço ajustado / preço ajustado anterior - 1) × 100`                          |
+| base_100                   | float               | `preço ajustado / primeiro preço ajustado do recorte × 100`                     |
+| drawdown                   | float               | `(preço ajustado / máximo ajustado acumulado - 1) × 100`                        |
+| sma_21 / sma_50            | float               | Média de 21 / 50 pregões do fechamento ajustado                                    |
+| retorno_acumulado          | float               | `(último ajustado / primeiro ajustado - 1) × 100`                                |
+| volatilidade_anual         | float               | Desvio padrão amostral do retorno diário decimal × √252 × 100                   |
+| sharpe_rf_zero             | float               | Média do retorno diário decimal × 252 / volatilidade anual decimal; rf = 0        |
+| drawdown_maximo            | float               | Menor drawdown no recorte, em %                                                      |
+| volume_medio_estimado      | float               | Média diária do volume financeiro estimado, em R$                                  |
 
 O primeiro retorno de cada recorte é nulo por não haver observação anterior dentro do filtro. As primeiras 20 e 49 observações de 2021 não têm SMA 21 e SMA 50 completas. Esses nulos dos indicadores são esperados.
 
 ## Tecnologias e relação com as aulas
 
-| Tecnologia / recurso | Uso |
-|---|---|
-| Python e Pandas | Limpeza, filtros e cálculos em funções curtas |
-| yfinance | Extração das séries históricas fora do dashboard |
-| Streamlit | Interface e publicação no Community Cloud |
-| `st.cache_data(ttl=600)` | Cache da consulta SQL e da leitura/tratamento do CSV |
-| `st.session_state` | Persistência dos filtros e callback de restauração |
-| `st.sidebar`, `st.columns`, `st.metric`, `st.tabs` | Organização nativa do painel |
-| Plotly Express | Cinco gráficos interativos |
-| `st.dataframe`, `st.download_button` | Consulta e exportação dos dados filtrados |
-| SQLAlchemy e psycopg | Conexão opcional ao PostgreSQL via `st.connection` |
-
-A referência de aprendizado é o [app da Semana 11](https://github.com/Visualizacao-Dados-BI-T2/M2_Semana_11). A implementação usa esses conceitos para o problema do projeto, com uma interface nativa e um pequeno conjunto de funções.
+| Tecnologia / recurso                                       | Uso                                                   |
+| ---------------------------------------------------------- | ----------------------------------------------------- |
+| Python e Pandas                                            | Limpeza, filtros e cálculos em funções curtas      |
+| yfinance                                                   | Extração das séries históricas fora do dashboard  |
+| Streamlit                                                  | Interface e publicação no Community Cloud           |
+| `st.cache_data(ttl=600)`                                 | Cache da consulta SQL e da leitura/tratamento do CSV  |
+| `st.session_state`                                       | Persistência dos filtros e callback de restauração |
+| `st.sidebar`, `st.columns`, `st.metric`, `st.tabs` | Organização nativa do painel                        |
+| Plotly Express                                             | Cinco gráficos interativos                           |
+| `st.dataframe`, `st.download_button`                   | Consulta e exportação dos dados filtrados           |
+| SQLAlchemy e psycopg                                       | Conexão opcional ao PostgreSQL via `st.connection` |
 
 ## Resultados e evidências numéricas
 
 Resultados do intervalo completo, para **as oito ações**, calculados a partir da coleta registrada em `origem.json`. O painel inicia com quatro ações, então os KPIs iniciais são diferentes da média das oito.
 
 | Ação | Retorno acumulado | Volatilidade anual | Drawdown máximo | Sharpe (rf = 0) |
-|---|---:|---:|---:|---:|
-| ABEV3 | 2,57% | 25,46% | -31,42% | 0,16 |
-| EGIE3 | 25,35% | 18,76% | -17,65% | 0,50 |
-| GGBR4 | 30,79% | 35,56% | -33,93% | 0,43 |
-| ITUB4 | 24,02% | 28,83% | -35,87% | 0,40 |
-| PETR4 | 228,69% | 39,42% | -39,10% | 1,22 |
-| RENT3 | -0,25% | 36,89% | -38,40% | 0,18 |
-| VALE3 | 18,11% | 33,90% | -41,34% | 0,33 |
-| WEGE3 | 3,51% | 32,83% | -49,51% | 0,20 |
+| ------ | ----------------: | -----------------: | ---------------: | --------------: |
+| ABEV3  |             2,57% |             25,46% |          -31,42% |            0,16 |
+| EGIE3  |            25,35% |             18,76% |          -17,65% |            0,50 |
+| GGBR4  |            30,79% |             35,56% |          -33,93% |            0,43 |
+| ITUB4  |            24,02% |             28,83% |          -35,87% |            0,40 |
+| PETR4  |           228,69% |             39,42% |          -39,10% |            1,22 |
+| RENT3  |            -0,25% |             36,89% |          -38,40% |            0,18 |
+| VALE3  |            18,11% |             33,90% |          -41,34% |            0,33 |
+| WEGE3  |             3,51% |             32,83% |          -49,51% |            0,20 |
 
 PETR4 apresentou o maior retorno e Sharpe simplificado, mas também a maior volatilidade anual da amostra. EGIE3 teve a menor volatilidade e o drawdown menos intenso. WEGE3 terminou acima do preço ajustado inicial, apesar de sofrer uma queda de 49,51% desde um topo durante o período. Essas diferenças mostram por que retorno final e risco durante o caminho devem ser examinados juntos.
 
@@ -108,15 +106,33 @@ As associações e movimentos dos gráficos descrevem o passado. Não demonstram
 
 ## Demonstração e navegação
 
-Status: versão local verificada com o AppTest do Streamlit e revisada visualmente pelo estudante em 18/10/2026, após ajustes no eixo do gráfico de drawdown e na formatação do volume financeiro. **A publicação no Community Cloud e as capturas reais da interface ainda estão pendentes.**
+Aplicação publicada: [Ações B3 — retorno e risco](https://samuel-bucco-projeto-final-b3.streamlit.app/).
 
-1. Na barra lateral, filtre setores, ações e período; use **Restaurar filtros** para voltar ao padrão.
-2. Confira quatro KPIs: retorno médio, melhor ativo, menor desempenho e volatilidade média anual.
-3. Em **Desempenho**, veja a base 100 e selecione uma ação para as médias móveis.
-4. Em **Risco**, veja a dispersão, o histograma, drawdowns e o resumo com Sharpe.
-5. Em **Dados**, consulte a tabela e baixe o CSV. Em **Sobre a análise**, consulte o método e as limitações.
+Status: versão local verificada com o AppTest do Streamlit e revisada visualmente em 18/10/2026, após ajustes no eixo do gráfico de drawdown e na formatação do volume financeiro. Na mesma data, o estudante confirmou na versão publicada a fonte Supabase, os filtros, a restauração e o download do CSV. As capturas abaixo registram o painel com ITUB4, PETR4, VALE3 e WEGE3 selecionadas, de 2021 a 2023.
 
 Os deltas de retorno e volatilidade comparam com o cálculo até o pregão anterior. Os deltas dos ativos de melhor e menor desempenho mostram a diferença para o retorno médio das ações selecionadas, em pontos percentuais.
+
+### Indicadores do recorte
+
+![Quatro KPIs: retorno médio, melhor e menor desempenho e volatilidade média anual](docs/imagens/indicadores.png)
+
+### Desempenho
+
+![Evolução das quatro ações em base 100 entre 2021 e 2023](docs/imagens/base-100.png)
+
+![Fechamento ajustado de PETR4 e médias móveis de 21 e 50 pregões](docs/imagens/medias-moveis.png)
+
+### Risco
+
+![Comparação de volatilidade anual e retorno acumulado por ação](docs/imagens/risco-retorno.png)
+
+![Histograma dos retornos diários e boxplots das quatro ações](docs/imagens/retornos-diarios.png)
+
+![Drawdown por ação com os títulos dos eixos sem sobreposição](docs/imagens/drawdown.png)
+
+### Resumo de retorno e risco
+
+![Tabela de retorno, volatilidade, Sharpe, drawdown e volume financeiro médio estimado](docs/imagens/resumo-retorno-risco.png)
 
 ## Como executar localmente
 
@@ -140,13 +156,13 @@ python -m src.etl --local
 python -m notebooks.analise_exploratoria
 ```
 
-Para uma nova coleta, execute `python -m src.etl`. Isso substitui a base e pode alterar números, devido a revisões do provedor; atualize as evidências do README após recoletar.
+Para uma nova coleta, execute `python -m src.etl`. Isso substitui a base e pode alterar números, devido a revisões do provedor.
 
 ### Conexão opcional ao Supabase
 
 Execute `src/modelo.sql` no editor SQL do Supabase. Importe primeiro `data/processed/dim_ativos.csv` em `dim_ativos` e depois `data/processed/fato_cotacoes.csv` em `fato_cotacoes`. Copie `.streamlit/secrets.toml.example` para `.streamlit/secrets.toml` e preencha os dados reais. No Cloud, use o painel de Secrets, sem versionar credenciais.
 
-O app tenta ler a view com `st.connection("postgresql", type="sql")`; se não conseguir, usa o CSV local. A conexão real ao Supabase foi configurada e validada em 17/10/2026: oito ativos, 5.960 cotações e a view acessível. O AppTest confirmou a fonte Supabase no painel, com quatro KPIs e cinco gráficos sem exceções. As credenciais ficam somente no arquivo local ignorado pelo Git; no deploy, devem ser configuradas nos Secrets do Streamlit Cloud.
+O app tenta ler a view com `st.connection("postgresql", type="sql")`; se não conseguir, usa o CSV local. A conexão real ao Supabase foi configurada e validada em 17/10/2026: oito ativos, 5.960 cotações e a view acessível. As credenciais ficam somente no arquivo local ignorado pelo Git; no deploy, devem ser configuradas nos Secrets do Streamlit Cloud.
 
 ### Publicação no Streamlit Community Cloud
 
@@ -171,20 +187,19 @@ requirements.txt               # Dependências
 
 ## Gestão ágil e links
 
-| Entrega | Link / estado |
-|---|---|
-| Repositório | [Projeto_Final_Mod_02_B3](https://github.com/samuelbucco/Projeto_Final_Mod_02_B3) |
-| Aplicação no Streamlit Cloud | Pendente de publicação |
-| Quadro Trello público | Pendente de criação / link |
-| Captura do quadro Trello | Pendente; incluir aqui após estruturar os cards |
-| Vídeo de 3 a 5 minutos | Pendente de gravação / link |
-| LinkedIn do estudante | Pendente de informar |
+| Entrega                        | Link / estado                                                                    |
+| ------------------------------ | -------------------------------------------------------------------------------- |
+| Repositório                   | [Projeto_Final_Mod_02_B3](https://github.com/samuelbucco/Projeto_Final_Mod_02_B3) |
+| Aplicação no Streamlit Cloud | [Abrir painel](https://samuel-bucco-projeto-final-b3.streamlit.app/)              |
+| Quadro Trello público         | Pendente de criação / link                                                     |
+| Captura do quadro Trello       | Pendente; incluir aqui após estruturar os cards                                 |
+| Vídeo de 3 a 5 minutos        | Pendente de gravação / link                                                    |
 
-O planejamento está em [docs/planejamento.md](docs/planejamento.md). Use `main` para a versão estável, `develop` para integração e `feature/*` para cada etapa, preservando as branches após os merges. Movimente somente um card por vez para Em andamento. Não confunda esta lista local com um quadro Trello já criado.
+O planejamento está em [docs/planejamento.md](docs/planejamento.md). Use `main` para a versão estável, `develop` para integração e `feature/*` para cada etapa, preservando as branches após os merges. Movimente somente um card por vez para Em andamento.
 
 ## Autoria, estudo e referências
 
-Estudante: **Samuel Bucco**. Esta versão foi preparada com assistência de IA para implementação, documentação e verificação. A interpretação final e a apresentação devem refletir o entendimento do estudante. O [guia de estudo](docs/guia_de_estudo.md) organiza os conceitos e exercícios para revisar e adaptar a solução.
+Aluno: **Samuel Bucco**. Esta versão foi preparada com assistência de IA para implementação, documentação e verificação. O [guia de estudo](docs/guia_de_estudo.md) organiza os conceitos e exercícios para revisar e adaptar a solução.
 
 - Roteiro de avaliação do módulo: `docs/Roteiro Projeto Final.pdf`.
 - [Aplicação de referência das aulas, Semana 11](https://github.com/Visualizacao-Dados-BI-T2/M2_Semana_11).
