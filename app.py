@@ -5,6 +5,11 @@ import streamlit as st
 from src.dados import carregar_dados
 from src.indicadores import adicionar_medias_moveis, calcular_indicadores
 
+
+def formatar_moeda(valor):
+    return f"R$ {valor:,.2f}".translate(str.maketrans(".,", ",."))
+
+
 st.set_page_config(page_title="Ações B3 | 2021 a 2023", page_icon="📈", layout="wide")
 st.title("Ações B3: retorno e risco")
 st.write("Como as ações selecionadas se comportaram entre 2021 e 2023?")
@@ -88,7 +93,8 @@ aba1, aba2, aba3, aba4 = st.tabs(["Desempenho", "Risco", "Dados", "Sobre a anál
 rotulos = {"data": "Data", "ticker": "Ação", "base_100": "Índice (base 100)",
            "retorno_diario": "Retorno diário (%)", "drawdown": "Queda desde o topo (%)",
            "retorno_acumulado": "Retorno acumulado (%)", "volatilidade_anual": "Volatilidade (% a.a.)",
-           "volume_medio_estimado": "Volume financeiro médio estimado (R$)", "setor": "Setor"}
+           "volume_medio_estimado": "Volume financeiro médio estimado (R$)",
+           "volume_formatado": "Volume financeiro médio estimado", "setor": "Setor"}
 
 with aba1:
     st.subheader("1. Evolução comparativa em base 100")
@@ -109,8 +115,10 @@ with aba1:
 
 with aba2:
     st.subheader("3. Risco e retorno")
-    grafico = px.scatter(resumo, x="volatilidade_anual", y="retorno_acumulado", color="setor",
-                         size="volume_medio_estimado", hover_name="ticker", text="ticker", labels=rotulos)
+    resumo_grafico = resumo.assign(volume_formatado=resumo["volume_medio_estimado"].map(formatar_moeda))
+    grafico = px.scatter(resumo_grafico, x="volatilidade_anual", y="retorno_acumulado", color="setor",
+                         size="volume_medio_estimado", hover_name="ticker", text="ticker", labels=rotulos,
+                         hover_data={"volume_medio_estimado": False, "volume_formatado": True})
     st.plotly_chart(grafico, width="stretch")
     st.caption("Bolhas: fechamento × quantidade negociada, uma aproximação do volume financeiro.")
 
@@ -123,17 +131,19 @@ with aba2:
     st.subheader("5. Queda em relação ao topo do período")
     grafico = px.area(serie, x="data", y="drawdown", facet_row="ticker", labels=rotulos,
                       height=max(300, 150 * len(ativos)))
+    grafico.update_yaxes(title_text="Queda (%)")
     st.plotly_chart(grafico, width="stretch")
     resiliente = resumo.loc[resumo["drawdown_maximo"].idxmax()]
     st.write(f"A menor queda máxima foi de {resiliente['drawdown_maximo']:.2f}% ({resiliente['ticker']}).")
     st.caption("O topo reinicia no primeiro pregão do filtro. Não considera picos anteriores ao recorte.")
     st.subheader("Resumo de retorno e risco")
-    st.dataframe(resumo, hide_index=True, width="stretch", column_config={
+    st.dataframe(resumo.style.format({"volume_medio_estimado": formatar_moeda}),
+                 hide_index=True, width="stretch", column_config={
         "retorno_acumulado": st.column_config.NumberColumn("Retorno (%)", format="%.2f"),
         "volatilidade_anual": st.column_config.NumberColumn("Volatilidade (% a.a.)", format="%.2f"),
         "sharpe_rf_zero": st.column_config.NumberColumn("Sharpe (rf = 0)", format="%.2f"),
         "drawdown_maximo": st.column_config.NumberColumn("Queda máxima (%)", format="%.2f"),
-        "volume_medio_estimado": st.column_config.NumberColumn("Volume médio estimado (R$)", format="%.2f"),
+        "volume_medio_estimado": "Volume financeiro médio estimado",
     })
     sharpes_validos = resumo.dropna(subset=["sharpe_rf_zero"])
     if not sharpes_validos.empty:
@@ -144,7 +154,10 @@ with aba2:
 
 with aba3:
     st.subheader("Cotações e indicadores do recorte")
-    st.dataframe(serie, hide_index=True, width="stretch")
+    st.dataframe(serie.style.format({"volume_financeiro_estimado": formatar_moeda}),
+                 hide_index=True, width="stretch", column_config={
+                     "volume_financeiro_estimado": "Volume financeiro estimado",
+                 })
     st.download_button("Baixar dados filtrados", serie.to_csv(index=False).encode("utf-8-sig"),
                        file_name="cotacoes_b3_filtradas.csv", mime="text/csv")
 

@@ -46,5 +46,5 @@ def carregar_dados():
     try:
         return consultar_banco(), "Supabase"
     except Exception:
-        # A contingência também permite executar sem credenciais de banco.
-        return ler_csv(), "CSV local (contingência)"
+        # O fallback também permite executar sem credenciais de banco.
+        return ler_csv(), "CSV local (fallback)"
