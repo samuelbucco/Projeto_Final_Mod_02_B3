@@ -1,5 +1,3 @@
--- Modelo simples: uma dimensão de ativos e uma fato diária.
--- Execute no editor SQL do Supabase; importe os CSVs gerados pelo EDA.
 CREATE TABLE IF NOT EXISTS dim_ativos (
     ticker TEXT PRIMARY KEY,
     setor TEXT NOT NULL

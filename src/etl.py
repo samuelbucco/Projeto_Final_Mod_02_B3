@@ -1,5 +1,3 @@
-"""Execute na raiz: python -m src.etl. Use --local para refazer só a limpeza."""
-
 import argparse
 import json
 from datetime import datetime, timezone

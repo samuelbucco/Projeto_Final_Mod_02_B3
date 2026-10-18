@@ -1,5 +1,3 @@
-"""Análise preliminar simples. Na raiz, execute: python -m notebooks.analise_exploratoria."""
-
 import pandas as pd
 
 from src.dados import CAMINHO_CSV, RAIZ

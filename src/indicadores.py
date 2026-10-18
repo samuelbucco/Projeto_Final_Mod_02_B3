@@ -1,5 +1,3 @@
-"""Cálculos em Pandas: uma série por ativo e um resumo comparativo."""
-
 import pandas as pd
 
 

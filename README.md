@@ -146,7 +146,7 @@ Para uma nova coleta, execute `python -m src.etl`. Isso substitui a base e pode 
 
 Execute `src/modelo.sql` no editor SQL do Supabase. Importe primeiro `data/processed/dim_ativos.csv` em `dim_ativos` e depois `data/processed/fato_cotacoes.csv` em `fato_cotacoes`. Copie `.streamlit/secrets.toml.example` para `.streamlit/secrets.toml` e preencha os dados reais. No Cloud, use o painel de Secrets, sem versionar credenciais.
 
-O app tenta ler a view com `st.connection("postgresql", type="sql")`; se não conseguir, usa o CSV local. A conexão real ao Supabase ainda não foi configurada nem validada; a versão local opera pela contingência.
+O app tenta ler a view com `st.connection("postgresql", type="sql")`; se não conseguir, usa o CSV local. A conexão real ao Supabase foi configurada e validada em 17/10/2026: oito ativos, 5.960 cotações e a view acessível. O AppTest confirmou a fonte Supabase no painel, com quatro KPIs e cinco gráficos sem exceções. As credenciais ficam somente no arquivo local ignorado pelo Git; no deploy, devem ser configuradas nos Secrets do Streamlit Cloud.
 
 ### Publicação no Streamlit Community Cloud
 

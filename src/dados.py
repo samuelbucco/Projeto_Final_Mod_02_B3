@@ -1,5 +1,3 @@
-"""Leitura e limpeza da base, com os mesmos recursos usados nas aulas."""
-
 from pathlib import Path
 
 import pandas as pd
