@@ -29,8 +29,10 @@ O AppTest do Streamlit executou a aplicação sem exceções e confirmou:
 - visualização das oito ações;
 - troca da ação para detalhar as médias móveis.
 
-O carregamento também foi exercitado simulando falha da função de consulta e um retorno SQL válido. Isso confirma a escolha entre banco e CSV, **não uma conexão real ao Supabase**.
+O carregamento também foi exercitado simulando falha da função de consulta e um retorno SQL válido, confirmando a escolha entre banco e CSV.
+
+Após a configuração das credenciais locais, a conexão real ao Supabase foi validada em 17/10/2026. As consultas retornaram oito registros em `dim_ativos`, 5.960 em `fato_cotacoes` e 5.960 na view `cotacoes_b3`, de 04/01/2021 a 28/12/2023. O AppTest confirmou a indicação de fonte Supabase no painel, quatro KPIs, cinco gráficos e nenhuma exceção. Nenhuma credencial foi incluída no Git.
 
 ## Limites desta verificação
 
-Não foram realizados deploy, conexão ao banco real, revisão visual no navegador nem teste de download pelo navegador. A integração de navegador falhou na inicialização. Os testes de componentes não substituem a conferência de layout e interação no app publicado.
+Não foram realizados deploy, revisão visual no navegador nem teste de download pelo navegador. A integração de navegador falhou na inicialização. Os testes de componentes não substituem a conferência de layout e interação no app publicado.
