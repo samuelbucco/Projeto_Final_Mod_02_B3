@@ -191,11 +191,13 @@ requirements.txt               # Dependências
 | ------------------------------ | -------------------------------------------------------------------------------- |
 | Repositório                   | [Projeto_Final_Mod_02_B3](https://github.com/samuelbucco/Projeto_Final_Mod_02_B3) |
 | Aplicação no Streamlit Cloud | [Abrir painel](https://samuel-bucco-projeto-final-b3.streamlit.app/)              |
-| Quadro Trello público         | Pendente de criação / link                                                     |
-| Captura do quadro Trello       | Pendente; incluir aqui após estruturar os cards                                 |
+| Quadro Trello público         | [Abrir quadro do projeto](https://trello.com/b/PZlWa64C/projeto-final-modulo-02-acoes-b3-samuel-bucco) |
+| Captura do quadro Trello       | [Ver captura](docs/imagens/trello.png)                                            |
 | Vídeo de 3 a 5 minutos        | Pendente de gravação / link                                                    |
 
 O planejamento está em [docs/planejamento.md](docs/planejamento.md). Use `main` para a versão estável, `develop` para integração e `feature/*` para cada etapa, preservando as branches após os merges. Movimente somente um card por vez para Em andamento.
+
+![Quadro Trello com as listas Backlog, A fazer, Em andamento e Concluído e uma única tarefa em andamento](docs/imagens/trello.png)
 
 ## Autoria, estudo e referências
 
