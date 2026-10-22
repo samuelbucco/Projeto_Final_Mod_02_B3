@@ -2,13 +2,15 @@
 
 Referência: roteiro de avaliação em `docs/Roteiro Projeto Final.pdf`.
 
+Quadro do projeto: [Projeto Final Módulo 02 — Ações B3 — Samuel Bucco](https://trello.com/b/PZlWa64C/projeto-final-modulo-02-acoes-b3-samuel-bucco).
+
 ## Escopo
 
 Linha B3, oito ações, três anos de histórico diário, cinco gráficos e quatro KPIs. Interface nativa do Streamlit, com sidebar, estado, reset, cache, abas e download. A base local permite a execução sem credenciais; o banco é opcional e possui modelo SQL preparado.
 
 ## Cards sugeridos para o Trello
 
-Crie um quadro pessoal público com **Backlog**, **A fazer**, **Em andamento** e **Concluído**. Atribua cada card a Samuel Bucco, descreva a entrega e mantenha apenas uma tarefa em andamento. Esta lista não representa movimentações já realizadas no Trello.
+O quadro do projeto utiliza **Backlog**, **A fazer**, **Em andamento** e **Concluído**. Atribua cada card a Samuel Bucco, descreva a entrega e mantenha apenas uma tarefa em andamento. As entregas anteriores à criação do quadro são registradas como concluídas, sem simular datas ou movimentações passadas.
 
 | Card | Critério para concluir |
 |---|---|
@@ -31,11 +33,12 @@ Crie um quadro pessoal público com **Backlog**, **A fazer**, **Em andamento** e
 - Revisão local: o estudante informou em 18/10/2026 ter testado o painel e considerado o resultado adequado após os ajustes visuais.
 - Publicação: https://samuel-bucco-projeto-final-b3.streamlit.app/. Em 18/10/2026, o estudante confirmou a fonte Supabase, os filtros, a restauração e a exportação em produção, e forneceu capturas dos cinco gráficos e do resumo.
 - Evidências visuais: sete capturas salvas em `docs/imagens` e incluídas no README, cobrindo KPIs, cinco gráficos e resumo de retorno e risco.
-- Pendente: quadro Trello público e sua captura, gravação do vídeo, LinkedIn e revisão pessoal do código.
+- Trello: o estudante forneceu o link público e confirmou a organização dos cards. A captura `docs/imagens/trello.png` foi conferida e incluída no README em 21/10/2026, mostrando as quatro listas e uma tarefa em andamento.
+- Pendente: gravação do vídeo, LinkedIn e revisão pessoal do código. Após integrar a documentação no GitHub, concluir o card de inclusão do link e da captura do Trello no README.
 ## Versionamento
 
 Use `feature/*` a partir de `develop`; integre em `develop` e, após revisão, em `main`. Preserve as branches após os merges, conforme o roteiro. Faça commits reais por etapa, sem reconstruir atividades ou datas que não aconteceram.
 
 ## Links que faltam no README
 
-Quadro Trello público, captura do quadro e vídeo. O endereço do Streamlit Cloud e as capturas do app já foram incluídos no README.
+Vídeo. Os endereços do Trello e do Streamlit Cloud, as capturas do app e a captura do quadro Trello já foram incluídos no README.
