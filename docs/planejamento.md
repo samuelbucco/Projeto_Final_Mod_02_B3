@@ -34,11 +34,12 @@ O quadro do projeto utiliza **Backlog**, **A fazer**, **Em andamento** e **Concl
 - Publicação: https://samuel-bucco-projeto-final-b3.streamlit.app/. Em 18/10/2026, o estudante confirmou a fonte Supabase, os filtros, a restauração e a exportação em produção, e forneceu capturas dos cinco gráficos e do resumo.
 - Evidências visuais: sete capturas salvas em `docs/imagens` e incluídas no README, cobrindo KPIs, cinco gráficos e resumo de retorno e risco.
 - Trello: o estudante forneceu o link público e confirmou a organização dos cards. A captura `docs/imagens/trello.png` foi conferida e incluída no README em 21/10/2026, mostrando as quatro listas e uma tarefa em andamento.
-- Pendente: gravação do vídeo, LinkedIn e revisão pessoal do código. Após integrar a documentação no GitHub, concluir o card de inclusão do link e da captura do Trello no README.
+- Vídeo: o estudante informou a gravação e publicação em 24/10/2026. Link: https://drive.google.com/file/d/17r8VZGJ_vWI1EuZcHo3sfsDIDRUmbEf3/view. A integração do Drive confirmou a permissão de leitura para qualquer pessoa com o link; conteúdo e duração não foram avaliados pelo assistente.
+- Pendente: conferência final dos requisitos, duração e conteúdo do vídeo, LinkedIn e submissão dos links no AVA. Após integrar a documentação no GitHub, concluir os cards de preparação e publicação do vídeo e iniciar a conferência final da entrega.
 ## Versionamento
 
 Use `feature/*` a partir de `develop`; integre em `develop` e, após revisão, em `main`. Preserve as branches após os merges, conforme o roteiro. Faça commits reais por etapa, sem reconstruir atividades ou datas que não aconteceram.
 
 ## Links que faltam no README
 
-Vídeo. Os endereços do Trello e do Streamlit Cloud, as capturas do app e a captura do quadro Trello já foram incluídos no README.
+Os três links principais (GitHub, Streamlit Cloud e vídeo) e o link do Trello estão registrados no README, junto às capturas do painel e do quadro. Falta realizar a conferência final e submeter os links no AVA.
