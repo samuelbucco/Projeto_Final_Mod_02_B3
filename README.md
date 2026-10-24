@@ -193,9 +193,11 @@ requirements.txt               # Dependências
 | Aplicação no Streamlit Cloud | [Abrir painel](https://samuel-bucco-projeto-final-b3.streamlit.app/)              |
 | Quadro Trello público         | [Abrir quadro do projeto](https://trello.com/b/PZlWa64C/projeto-final-modulo-02-acoes-b3-samuel-bucco) |
 | Captura do quadro Trello       | [Ver captura](docs/imagens/trello.png)                                            |
-| Vídeo de 3 a 5 minutos        | Pendente de gravação / link                                                    |
+| Vídeo de apresentação        | [Assistir no Google Drive](https://drive.google.com/file/d/17r8VZGJ_vWI1EuZcHo3sfsDIDRUmbEf3/view) |
 
 O planejamento está em [docs/planejamento.md](docs/planejamento.md). Use `main` para a versão estável, `develop` para integração e `feature/*` para cada etapa, preservando as branches após os merges. Movimente somente um card por vez para Em andamento.
+
+O [roteiro de apresentação](docs/roteiro_video.md) registra a preparação da gravação. O vídeo foi publicado pelo estudante no Google Drive em 24/10/2026, com permissão de leitura para qualquer pessoa com o link.
 
 ![Quadro Trello com as listas Backlog, A fazer, Em andamento e Concluído e uma única tarefa em andamento](docs/imagens/trello.png)
 

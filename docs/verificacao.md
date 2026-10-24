@@ -34,3 +34,7 @@ Após a configuração das credenciais locais, a conexão real ao Supabase foi v
 ## Versão publicada
 
 Em 18/10/2026, o estudante confirmou o funcionamento de https://samuel-bucco-projeto-final-b3.streamlit.app/: fonte Supabase, filtros, restauração e download do CSV. Também forneceu sete capturas de KPIs, cinco gráficos e resumo de retorno e risco, salvas em `docs/imagens` e incluídas no README. O gráfico de drawdown apresenta os títulos curtos “Queda (%)” sem a sobreposição anterior. A validação funcional em produção foi informada pelo estudante; as capturas foram examinadas pelo assistente.
+
+## Vídeo de apresentação
+
+Em 24/10/2026, o estudante informou a conclusão e publicação do vídeo em https://drive.google.com/file/d/17r8VZGJ_vWI1EuZcHo3sfsDIDRUmbEf3/view. A consulta de metadados pela integração Google Drive identificou um arquivo `video/mp4` com permissão `anyone` e papel `reader`, confirmando o compartilhamento por link. O conteúdo e a duração não foram avaliados nesta verificação; essa conferência permanece na revisão final da entrega.
